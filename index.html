@@ -1,121 +1,95 @@
+<!DOCTYPE html>
+
+<!--SEO搜索引擎优化，SEO三要素-->
 <html>
-  <head>
-    <meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Gridea</title>
-<link rel="shortcut icon" href="https://nanzhi.online/favicon.ico?v=1583636151088">
-<link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
-<link rel="stylesheet" href="https://nanzhi.online/styles/main.css">
-<link rel="alternate" type="application/atom+xml" title="Gridea - Atom Feed" href="https://nanzhi.online/atom.xml">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
+	<head><!--写给浏览器看的-->
+		<meta charset="utf-8"><!--字符编码-->
+		<meta name="Keywords"content="橘猫游戏"><!--关键词匹配-->
+		<meta name="Description"content="快乐的源泉">
+		<title>橘猫游戏——快乐的源泉</title>
+		<style>/* "装修公司地址" css样式表*/
+			body{
+				margin: 0/*外边距*/
+			}
+			ul{
+				list-style: none;/*去除li的小圆点*/
+				margin: 0;
+				padding: 0;
+			}
 
+			p{
+				margin: 0
+			}
+			.wrap{ /*class选择器*/
+				width: 1007px;/*宽度 属性名称：属性值（单位）；*/
+				height: 243px;/*高度*/
+				margin: 100px auto;/*第一个控制上下，第二个控制左右,auto:居中*/
+				/*background-color: #096  背景颜色*/
+				background-image: url("images/123.jpg");/*背景图片*/
+			}
 
-
-    <meta name="description" content="温故而知新" />
-  </head>
-  <body>
-    <div class="main">
-      <div class="main-content">
-        <div class="site-header">
-  <a href="https://nanzhi.online">
-  <img class="avatar" src="https://nanzhi.online/images/avatar.png?v=1583636151088" alt="">
-  </a>
-  <h1 class="site-title">
-    Gridea
-  </h1>
-  <p class="site-description">
-    温故而知新
-  </p>
-  <div class="menu-container">
-    
-      
-        <a href="/" class="menu">
-          首页
-        </a>
-      
-    
-      
-        <a href="/archives" class="menu">
-          归档
-        </a>
-      
-    
-      
-        <a href="/tags" class="menu">
-          标签
-        </a>
-      
-    
-      
-        <a href="/post/about" class="menu">
-          关于
-        </a>
-      
-    
-  </div>
-  <div class="social-container">
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-  </div>
-</div>
-
-    
-        <div class="post-container">
-  
-    <article class="post">
-      <a href="https://nanzhi.online/post/hello-gridea/">
-        <h2 class="post-title">Hello Gridea</h2>
-      </a>
-      <div class="post-info">
-        <span>
-          2018-12-12
-        </span>
-        <span>
-          2 min read
-        </span>
-        
-          <a href="https://nanzhi.online/tag/XjNXZDey-/" class="post-tag">
-            # Gridea
-          </a>
-        
-      </div>
-      
-        <a href="https://nanzhi.online/post/hello-gridea/" class="post-feature-image" style="background-image: url('https://nanzhi.online/post-images/hello-gridea.png')">
-        </a>
-      
-      <div class="post-abstract">
-        <p>👏  欢迎使用 <strong>Gridea</strong> ！<br>
-✍️  <strong>Gridea</strong> 一个静态博客写作客户端。你可以用它来记录你的生活、心情、知识、笔记、创意... ...</p>
-
-      </div>
-    </article>
-  
-</div>
-
-    
-        <div class="pagination-container">
-  
-  
-</div>
-
-    
-        <div class="site-footer">
-  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
-  <a class="rss" href="https://nanzhi.online/atom.xml" target="_blank">
-    <i class="ri-rss-line"></i> RSS
-  </a>
-</div>
-
-      </div>
-    </div>
-  </body>
+			.wrap li{
+				float: left;/*浮动属性*/
+				width: 221px;
+				margin: 80px 14px;
+				text-align: center;/*文字对齐方式：居中对齐*/
+				font-size: 14px;/*文字大小*/
+			}
+			.wrap li:hover{/*鼠标移动到li上执行括号的代码*/
+				color: #f63;/*文本颜色*/
+			}
+			.wrap img{
+				border-radius: 10px;/*圆角属性*/
+				
+			}
+			.wrap img:hover{
+				animation: /*动画激活属性*/shake 1s;
+			}
+			@keyframes shake{
+				0%{
+					transform: scale(1,1);/*css3变换属性 scale比例*/
+				}
+				50%{
+					transform: scale(1.25,0.75);
+				}
+				60%{
+					transform: scale(0.8,1.2);
+				}
+				70%{
+					transform: scale(1.15,0.85);
+				}
+				80%{
+					transform: scale(0.9,1.1);
+				}
+				90%{
+					transform: scale(1.05,0.9);
+				}
+				100%{
+					transform: scale(1,1);
+				}
+			}
+		</style>
+	</head>
+	<body><!--写给人看的-->
+		<div class="wrap"><!--“盖房子”标签：宽高大小颜色 css-->
+			<ul><!--无序列表标签—-->
+				<li>
+					<img src="images/345.jpg"><!--显示图片的标签-->
+					<p>橘猫logo</p><!--文本段落标签-->
+				</li>
+				<li>
+					<img src="images/3456.jpg"><!--显示图片的标签-->
+					<p>橘猫logo</p><!--文本段落标签-->
+				</li>
+				<li>
+					<img src="images/56.jpg"><!--显示图片的标签-->
+					<p>橘猫logo</p><!--文本段落标签-->
+				</li>
+				<li>
+					<img src="images/768.jpg"><!--显示图片的标签-->
+					<p>橘猫logo</p><!--文本段落标签-->
+				</li>
+			</ul>
+		</div>
+	</body>
 </html>
