@@ -65,11 +65,15 @@ $CONFIG = array(
  *   This disallows all other ports on this host
  * - use * as a wildcard, e.g. ubos-raspberry-pi*.local will allow
  *   ubos-raspberry-pi.local and ubos-raspberry-pi-2.local
+ * - the IP address with or without permitted port, e.g. [2001:db8::1]:8080
+ *   Using TLS certificates where commonName=<IP address> is deprecated
  */
 'trusted_domains' =>
   array (
     'demo.example.org',
     'otherdomain.example.org',
+    '10.111.112.113',
+    '[2001:db8::1]'
   ),
 
 
@@ -1187,7 +1191,7 @@ $CONFIG = array(
 ),
 
 /**
- * Connection options for memcached, see http://apprize.info/php/scaling/15.html
+ * Connection options for memcached
  */
 'memcached_options' => array(
 	// Set timeouts to 50ms

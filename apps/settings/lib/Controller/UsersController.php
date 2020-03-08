@@ -23,43 +23,10 @@
  * along with this program. If not, see <http://www.gnu.org/licenses/>
  *
  */
+
 // FIXME: disabled for now to be able to inject IGroupManager and also use
 // getSubAdmin()
 //declare(strict_types=1);
-/**
- * @copyright Copyright (c) 2016, ownCloud, Inc.
- *
- * @author Arthur Schiwon <blizzz@arthur-schiwon.de>
- * @author Bjoern Schiessle <bjoern@schiessle.org>
- * @author Björn Schießle <bjoern@schiessle.org>
- * @author Christoph Wurst <christoph@owncloud.com>
- * @author Clark Tomlinson <fallen013@gmail.com>
- * @author Joas Schilling <coding@schilljs.com>
- * @author Lukas Reschke <lukas@statuscode.ch>
- * @author Morris Jobke <hey@morrisjobke.de>
- * @author Robin Appelman <robin@icewind.nl>
- * @author Roeland Jago Douma <roeland@famdouma.nl>
- * @author Thomas Müller <thomas.mueller@tmit.eu>
- * @author Thomas Pulzer <t.pulzer@kniel.de>
- * @author Tobia De Koninck <tobia@ledfan.be>
- * @author Tobias Kaminsky <tobias@kaminsky.me>
- * @author Vincent Petry <pvince81@owncloud.com>
- *
- * @license AGPL-3.0
- *
- * This code is free software: you can redistribute it and/or modify
- * it under the terms of the GNU Affero General Public License, version 3,
- * as published by the Free Software Foundation.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
- * GNU Affero General Public License for more details.
- *
- * You should have received a copy of the GNU Affero General Public License, version 3,
- * along with this program.  If not, see <http://www.gnu.org/licenses/>
- *
- */
 
 namespace OCA\Settings\Controller;
 
@@ -68,11 +35,13 @@ use OC\AppFramework\Http;
 use OC\Encryption\Exceptions\ModuleDoesNotExistsException;
 use OC\ForbiddenException;
 use OC\Security\IdentityProof\Manager;
+use OCA\Settings\AppInfo\Application;
 use OCA\Settings\BackgroundJobs\VerifyUserData;
 use OCA\User_LDAP\User_Proxy;
 use OCP\App\IAppManager;
 use OCP\AppFramework\Controller;
 use OCP\AppFramework\Http\DataResponse;
+use OCP\AppFramework\Http\JSONResponse;
 use OCP\AppFramework\Http\TemplateResponse;
 use OCP\BackgroundJob\IJobList;
 use OCP\Encryption\IManager;
@@ -85,6 +54,7 @@ use OCP\IUserManager;
 use OCP\IUserSession;
 use OCP\L10N\IFactory;
 use OCP\Mail\IMailer;
+use function in_array;
 
 class UsersController extends Controller {
 	/** @var IUserManager */
@@ -247,12 +217,7 @@ class UsersController extends Controller {
 		];
 
 		/* QUOTAS PRESETS */
-		$quotaPreset = $this->config->getAppValue('files', 'quota_preset', '1 GB, 5 GB, 10 GB');
-		$quotaPreset = explode(',', $quotaPreset);
-		foreach ($quotaPreset as &$preset) {
-			$preset = trim($preset);
-		}
-		$quotaPreset = array_diff($quotaPreset, array('default', 'none'));
+		$quotaPreset = $this->parseQuotaPreset($this->config->getAppValue('files', 'quota_preset', '1 GB, 5 GB, 10 GB'));
 		$defaultQuota = $this->config->getAppValue('files', 'default_quota', 'none');
 
 		\OC::$server->getEventDispatcher()->dispatch('OC\Settings\Users::loadAdditionalScripts');
@@ -276,8 +241,39 @@ class UsersController extends Controller {
 		$serverData['canChangePassword'] = $canChangePassword;
 		$serverData['newUserGenerateUserID'] = $this->config->getAppValue('core', 'newUser.generateUserID', 'no') === 'yes';
 		$serverData['newUserRequireEmail'] = $this->config->getAppValue('core', 'newUser.requireEmail', 'no') === 'yes';
+		$serverData['newUserSendEmail'] = $this->config->getAppValue('core', 'newUser.sendEmail', 'yes') === 'yes';
 
 		return new TemplateResponse('settings', 'settings-vue', ['serverData' => $serverData]);
+	}
+
+	/**
+	 * @param string $key
+	 * @param string $value
+	 *
+	 * @return JSONResponse
+	 */
+	public function setPreference(string $key, string $value): JSONResponse {
+		$allowed = ['newUser.sendEmail'];
+		if (!in_array($key, $allowed, true)) {
+			return new JSONResponse([], Http::STATUS_FORBIDDEN);
+		}
+
+		$this->config->setAppValue('core', $key, $value);
+
+		return new JSONResponse([]);
+	}
+
+	/**
+	 * Parse the app value for quota_present
+	 *
+	 * @param string $quotaPreset
+	 * @return array
+	 */
+	protected function parseQuotaPreset(string $quotaPreset): array {
+		// 1 GB, 5 GB, 10 GB => [1 GB, 5 GB, 10 GB]
+		$presets = array_filter(array_map('trim', explode(',', $quotaPreset)));
+		// Drop default and none, Make array indexes numerically
+		return array_values(array_diff($presets, ['default', 'none']));
 	}
 
 	/**

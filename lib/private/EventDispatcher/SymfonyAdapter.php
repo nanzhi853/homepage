@@ -63,7 +63,7 @@ class SymfonyAdapter implements EventDispatcherInterface {
 			$this->eventDispatcher->dispatch($eventName, $event);
 		} else {
 			// Legacy event
-			$this->logger->debug(
+			$this->logger->info(
 				'Deprecated event type for {name}: {class}',
 				[ 'name' => $eventName, 'class' => is_object($event) ? get_class($event) : 'null' ]
 			);
