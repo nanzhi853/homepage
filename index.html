@@ -1,96 +1,341 @@
 <!DOCTYPE html>
-
-<!--SEO搜索引擎优化，SEO三要素-->
 <html>
-	<head><!--写给浏览器看的-->
-		<meta charset="utf-8"><!--字符编码-->
-		<meta name="Keywords"content="橘猫游戏"><!--关键词匹配-->
-		<meta name="Description"content="快乐的源泉">
-		<link rel="icon" href="images/logo.ico" type="image/x-icon"/>
-		<title>橘猫游戏——快乐的源泉</title>
-		<style>/* "装修公司地址" css样式表*/
-			body{
-				margin: 0/*外边距*/
-			}
-			ul{
-				list-style: none;/*去除li的小圆点*/
-				margin: 0;
-				padding: 0;
-			}
-
-			p{
-				margin: 0
-			}
-			.wrap{ /*class选择器*/
-				width: 1007px;/*宽度 属性名称：属性值（单位）；*/
-				height: 243px;/*高度*/
-				margin: 100px auto;/*第一个控制上下，第二个控制左右,auto:居中*/
-				/*background-color: #096  背景颜色*/
-				background-image: url("images/123.jpg");/*背景图片*/
-			}
-
-			.wrap li{
-				float: left;/*浮动属性*/
-				width: 221px;
-				margin: 80px 14px;
-				text-align: center;/*文字对齐方式：居中对齐*/
-				font-size: 14px;/*文字大小*/
-			}
-			.wrap li:hover{/*鼠标移动到li上执行括号的代码*/
-				color: #f63;/*文本颜色*/
-			}
-			.wrap img{
-				border-radius: 10px;/*圆角属性*/
-				
-			}
-			.wrap img:hover{
-				animation: /*动画激活属性*/shake 1s;
-			}
-			@keyframes shake{
-				0%{
-					transform: scale(1,1);/*css3变换属性 scale比例*/
-				}
-				50%{
-					transform: scale(1.25,0.75);
-				}
-				60%{
-					transform: scale(0.8,1.2);
-				}
-				70%{
-					transform: scale(1.15,0.85);
-				}
-				80%{
-					transform: scale(0.9,1.1);
-				}
-				90%{
-					transform: scale(1.05,0.9);
-				}
-				100%{
-					transform: scale(1,1);
-				}
-			}
-		</style>
-	</head>
-	<body><!--写给人看的-->
-		<div class="wrap"><!--“盖房子”标签：宽高大小颜色 css-->
-			<ul><!--无序列表标签—-->
-				<li>
-					<img src="images/345.jpg"><!--显示图片的标签-->
-					<p>橘猫logo</p><!--文本段落标签-->
-				</li>
-				<li>
-					<img src="images/3456.jpg"><!--显示图片的标签-->
-					<p>橘猫logo</p><!--文本段落标签-->
-				</li>
-				<li>
-					<img src="images/56.jpg"><!--显示图片的标签-->
-					<p>橘猫logo</p><!--文本段落标签-->
-				</li>
-				<li>
-					<img src="images/768.jpg"><!--显示图片的标签-->
-					<p>橘猫logo</p><!--文本段落标签-->
-				</li>
-			</ul>
-		</div>
-	</body>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>论坛首页</title>
+    <link rel="stylesheet" href="css/reset.css"/>
+    <link rel="stylesheet" href="css/public.css"/>
+    <link rel="stylesheet" href="css/index.css"/>
+</head>
+<body>
+<header class="ltHead">
+    <div class="ltHead_cen">
+        <a href=""><img src="img/logo.png" alt="" class="headPic1"/></a>
+        <ul class="headNav">
+            <li><a href="">首页</a></li>
+            <li><a href="">沪牌竞拍</a></li>
+            <li><a href="">拍王助手</a></li>
+            <li><a href="">深圳竞价摇号</a></li>
+            <li><a href="">广州竞价摇号</a></li>
+            <li><a href="">杭州竞价摇号</a></li>
+            <li><a href="">天津竞价摇号</a></li>
+            <li><a href="">增值服务</a></li>
+        </ul>
+        <!--未登入开始-->
+        <div class="ltForm appear">
+            <a href=""><img src="img/indexForm_bg.png" alt="" class="headPic2"/></a>
+            <ul>
+                <li><a href="">登入</a></li>
+                <li><a href="">注册</a></li>
+            </ul>
+        </div>
+        <!-- 未登入结束-->
+        <!-- 登入开始，未登入时以下隐藏-->
+        <!--<div class="lt_login appear">-->
+        <!--<ul>-->
+        <!--<li><a href="">花开花落</a></li>-->
+        <!--<li><a href="">退出</a></li>-->
+        <!--</ul>-->
+        <!--</div>-->
+        <!-- 登入结束-->
+        <div class="navFix">
+            <!--登入开始-->
+            <a href="" class="navMe">花花</a>
+            <!--登入结束-->
+            <!--未登入开始-->
+            <!--<a href="" class="navLogin">登录</a>-->
+            <!--未登入结束-->
+            <a href="" class="navWrite">发新帖</a>
+        </div>
+    </div>
+</header>
+<div class="indexMain">
+    <div class="indexMain_left">
+        <div class="indexMain_left_btn">
+            <ul>
+                <li><a href="javascript:">置顶</a></li>
+                <li><a href="javascript:" class="on">最新</a></li>
+            </ul>
+        </div>
+        <div class="indexMain_left_con">
+            <!--有主题图循环开始-->
+            <div class="indexCon_msg">
+                <div class="indexCon_msg_pic"></div>
+                <div class="indexCon_msg_detail">
+                    <a href="">
+                        <div class="indexCon_msg_detail_tittle">
+                            <span>竞拍</span>
+                            <p>关注上海车牌竞拍方面的资讯，对当月竞拍分析发表独到见解</p>
+                        </div>
+                    </a>
+                    <div class="havePic">
+                        <a href=""><div class="havePic_head"></div></a>
+                    </div>
+                    <div class="indexCon_msg_detail_other">
+                        <ul>
+                            <li>花开花落</li>
+                            <li>1天前</li>
+                            <li>21</li>
+                            <li>28</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="clear"></div>
+            </div>
+            <!--有主题图循环结束-->
+            <!--无主题图循环开始-->
+            <div class="indexCon_msg">
+                <div class="indexCon_msg_pic"></div>
+                <div class="indexCon_msg_detail">
+                    <a href="">
+                        <div class="indexCon_msg_detail_tittle">
+                            <span>竞拍</span>
+                            <p>关注上海车牌竞拍方面的资讯，对当月竞拍分析发表独到见解</p>
+                        </div>
+                    </a>
+                    <div class="indexCon_msg_detail_other">
+                        <ul>
+                            <li>花开花落</li>
+                            <li>1天前</li>
+                            <li>21</li>
+                            <li>28</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="clear"></div>
+            </div>
+            <!--无主题图循环结束-->
+            <div class="indexCon_msg">
+                <div class="indexCon_msg_pic"></div>
+                <div class="indexCon_msg_detail">
+                    <a href="">
+                        <div class="indexCon_msg_detail_tittle">
+                            <span>竞拍</span>
+                            <p>关注上海车牌竞拍方面的资讯，对当月竞拍分析发表独到见解</p>
+                        </div>
+                    </a>
+                    <div class="indexCon_msg_detail_other">
+                        <ul>
+                            <li>花开花落</li>
+                            <li>1天前</li>
+                            <li>21</li>
+                            <li>28</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="clear"></div>
+            </div>
+            <div class="indexCon_msg">
+                <div class="indexCon_msg_pic"></div>
+                <div class="indexCon_msg_detail">
+                    <a href="">
+                        <div class="indexCon_msg_detail_tittle">
+                            <span>竞拍</span>
+                            <p>关注上海车牌竞拍方面的资讯，对当月竞拍分析发表独到见解</p>
+                        </div>
+                    </a>
+                    <div class="havePic">
+                        <a href=""><div class="havePic_head"></div></a>
+                    </div>
+                    <div class="indexCon_msg_detail_other">
+                        <ul>
+                            <li>花开花落</li>
+                            <li>1天前</li>
+                            <li>21</li>
+                            <li>28</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="clear"></div>
+            </div>
+            <div class="indexCon_msg">
+                <div class="indexCon_msg_pic"></div>
+                <div class="indexCon_msg_detail">
+                    <a href="">
+                        <div class="indexCon_msg_detail_tittle">
+                            <span>竞拍</span>
+                            <p>关注上海车牌竞拍方面的资讯，对当月竞拍分析发表独到见解</p>
+                        </div>
+                    </a>
+                    <div class="indexCon_msg_detail_other">
+                        <ul>
+                            <li>花开花落</li>
+                            <li>1天前</li>
+                            <li>21</li>
+                            <li>28</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="clear"></div>
+            </div>
+            <div class="indexCon_msg">
+                <div class="indexCon_msg_pic"></div>
+                <div class="indexCon_msg_detail">
+                    <a href="">
+                        <div class="indexCon_msg_detail_tittle">
+                            <span>竞拍</span>
+                            <p>关注上海车牌竞拍方面的资讯，对当月竞拍分析发表独到见解</p>
+                        </div>
+                    </a>
+                    <div class="indexCon_msg_detail_other">
+                        <ul>
+                            <li>花开花落</li>
+                            <li>1天前</li>
+                            <li>21</li>
+                            <li>28</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="clear"></div>
+            </div>
+            <div class="indexCon_msg">
+                <div class="indexCon_msg_pic"></div>
+                <div class="indexCon_msg_detail">
+                    <a href="">
+                        <div class="indexCon_msg_detail_tittle">
+                            <span>竞拍</span>
+                            <p>关注上海车牌竞拍方面的资讯，对当月竞拍分析发表独到见解</p>
+                        </div>
+                    </a>
+                    <div class="havePic">
+                        <a href=""><div class="havePic_head"></div></a>
+                    </div>
+                    <div class="indexCon_msg_detail_other">
+                        <ul>
+                            <li>花开花落</li>
+                            <li>1天前</li>
+                            <li>21</li>
+                            <li>28</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="clear"></div>
+            </div>
+            <div class="indexCon_msg">
+                <div class="indexCon_msg_pic"></div>
+                <div class="indexCon_msg_detail">
+                    <a href="">
+                        <div class="indexCon_msg_detail_tittle">
+                            <span>竞拍</span>
+                            <p>关注上海车牌竞拍方面的资讯，对当月竞拍分析发表独到见解</p>
+                        </div>
+                    </a>
+                    <div class="indexCon_msg_detail_other">
+                        <ul>
+                            <li>花开花落</li>
+                            <li>1天前</li>
+                            <li>21</li>
+                            <li>28</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="clear"></div>
+            </div>
+            <div class="indexCon_msg">
+                <div class="indexCon_msg_pic"></div>
+                <div class="indexCon_msg_detail">
+                    <a href="">
+                        <div class="indexCon_msg_detail_tittle">
+                            <span>竞拍</span>
+                            <p>关注上海车牌竞拍方面的资讯，对当月竞拍分析发表独到见解</p>
+                        </div>
+                    </a>
+                    <div class="indexCon_msg_detail_other">
+                        <ul>
+                            <li>花开花落</li>
+                            <li>1天前</li>
+                            <li>21</li>
+                            <li>28</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="clear"></div>
+            </div>
+        </div>
+        <div class="indexFooter">
+            <div class="indexFooter_con">
+                <a href="javascript:"><</a>
+                <a href="" class="on">1</a>
+                <a href="">2</a>
+                <a href="">3</a>
+                <a href="javascript:">></a>
+            </div>
+        </div>
+    </div>
+    <div class="indexMain_right">
+        <div class="indexMain_rightCon">
+            <a href="" class="newMsg">发新帖</a>
+            <div class="pwfb">
+                <div class="pwfbHead">
+                    拍王发布
+                </div>
+                <div class="pwfbCon"></div>
+                <div class="pwfbFooter"></div>
+            </div>
+            <div class="indexSearch">
+                <input type="text" placeholder="请输入关键词"/>
+                <input type="submit" value="搜索"/>
+            </div>
+            <div class="indexPublic">
+                <div class="indexPublic_head">
+                    本周热议
+                </div>
+                <div class="indexPublic_con">
+                    <ul class="weekHot">
+                        <li><a href="">关注上海车牌竞拍方面的资讯</a><span>29</span></li>
+                        <li><a href="">关注上海车牌竞拍方面的资讯</a><span>29</span></li>
+                        <li><a href="">关注上海车牌竞拍方面的资讯</a><span>29</span></li>
+                        <li><a href="">关注上海车牌竞拍方面的资讯</a><span>29</span></li>
+                        <li><a href="">关注上海车牌竞拍方面的资讯</a><span>29</span></li>
+                        <li><a href="">关注上海车牌竞拍方面的资讯</a><span>29</span></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="indexPublic">
+                <div class="indexPublic_head">
+                    友情链接
+                </div>
+                <div class="indexPublic_con">
+                    <ul class="indexLink">
+                        <li><a href="">拍王淘宝链接</a></li>
+                        <li><a href="">拍王网站</a></li>
+                        <li><a href="">拍王助手</a></li>
+                        <li><a href="">沪牌模拟</a></li>
+                        <li><a href="">拍王合作咨询</a></li>
+                        <li><a href="">快法务</a></li>
+                        <li><a href="">国拍网</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="indexWxpublic">
+                <p>关注微信公众号</p>
+            </div>
+        </div>
+    </div>
+    <div class="clear"></div>
+</div>
+<footer class="publicFooter">
+    <p>Copyrigh &copy; 2017-2018 PaiWang 上海钦合投资管理有限公司版权所有 沪ICP备16032224号-2</p>
+</footer>
+</body>
 </html>
+<script src="js/jquery-1.8.3.min.js"></script>
+<script>
+    $(".indexMain_left_btn li a").click(function(){
+        $(".indexMain_left_btn li a").removeClass("on");
+        $(this).addClass("on");
+    });
+    window.onscroll=function(){
+        var scrolls=document.body.scrollTop||document.documentElement.scrollTop;
+        var slided=60;
+        if(scrolls>=slided){
+            $(".appear").hide();
+            $(".navFix").show();
+            $(".ltHead").addClass("navTop");
+        }else{
+            $(".appear").show();
+            $(".navFix").hide();
+            $(".ltHead").removeClass("navTop");
+        }
+    };
+</script>
